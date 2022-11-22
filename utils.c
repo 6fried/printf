@@ -32,18 +32,19 @@ int _puts(char *str)
  */
 char *dectostr(int n)
 {
-	int tmp, size;
+	int tmp, size = 0;
 	char rep[] = "0123456789";
 	char *buffer, *ptr;
 
-	tmp = n;
 	size = 0;
 
 	if (n < 0)
 	{
 		n = -n;
-		write(1, "-", 1);
+		size++;
 	}
+
+	tmp = n;
 
 	do {
 		tmp = tmp / 10;
@@ -54,10 +55,15 @@ char *dectostr(int n)
 	ptr = &buffer[size - 1];
 	*ptr = '\0';
 
+	tmp = n;
+
 	do {
-		*--ptr = rep[n % 10];
-		n /= 10;
-	} while (n != 0);
+		*--ptr = rep[tmp % 10];
+		tmp /= 10;
+	} while (tmp != 0);
+
+	if (buffer[0] == 0)
+		*--ptr = '-';
 
 	return (buffer);
 }
