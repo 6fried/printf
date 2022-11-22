@@ -28,6 +28,7 @@ int _puts(char *str)
 /**
  * basetostr - function
  * @n: param
+ * @base: param
  * Return: char *
  */
 char *basetostr(int n, int base)

@@ -35,6 +35,9 @@ int _printf(const char *format, ...)
 			case 'i':
 				n += _puts(basetostr(va_arg(arg, int), 10));
 				break;
+			case '\0':
+				_puts("");
+				break;
 			default:
 				break;
 			}
@@ -47,4 +50,10 @@ int _printf(const char *format, ...)
 		va_end(arg);
 	}
 	return (n);
+}
+
+int main()
+{
+	_printf("Hello %");
+	return 0;
 }
