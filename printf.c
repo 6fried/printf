@@ -51,9 +51,3 @@ int _printf(const char *format, ...)
 	}
 	return (n);
 }
-
-int main()
-{
-	_printf("Hello %");
-	return 0;
-}
