@@ -23,7 +23,13 @@ int _printf(const char *format, ...)
 			case 'c':
 				n += _putchar(va_arg(arg, int));
 				break;
+			case 'C':
+				n += _putchar(va_arg(arg, int));
+				break;
 			case 's':
+				n += _puts(va_arg(arg, char *));
+				break;
+			case 'S':
 				n += _puts(va_arg(arg, char *));
 				break;
 			case '%':
