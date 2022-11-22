@@ -7,5 +7,5 @@
 int _printf(const char *format, ...);
 int _putchar(char c);
 int _puts(char *str);
-char *dectostr(int n);
+char *basetostr(int n, int base);
 #endif

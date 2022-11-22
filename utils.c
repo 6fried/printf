@@ -26,14 +26,14 @@ int _puts(char *str)
 }
 
 /**
- * dectostr - function
+ * basetostr - function
  * @n: param
  * Return: char *
  */
-char *dectostr(int n)
+char *basetostr(int n, int base)
 {
 	int tmp, size = 0;
-	char rep[] = "0123456789";
+	char rep[] = "0123456789ABCDEF";
 	char *buffer, *ptr;
 
 	size = 0;
@@ -58,8 +58,8 @@ char *dectostr(int n)
 	tmp = n;
 
 	do {
-		*--ptr = rep[tmp % 10];
-		tmp /= 10;
+		*--ptr = rep[tmp % base];
+		tmp /= base;
 	} while (tmp != 0);
 
 	if (buffer[0] == 0)
