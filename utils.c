@@ -48,7 +48,7 @@ char *basetostr(int n, int base)
 	tmp = n;
 
 	do {
-		tmp = tmp / 10;
+		tmp = tmp / base;
 		size++;
 	} while (tmp > 0);
 
