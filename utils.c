@@ -72,6 +72,12 @@ char *basetostr(int n, int base)
 	return (buffer);
 }
 
+/**
+ * hangle_flag - function
+ * @c: param
+ * @ap: param
+ * Return: int
+ */
 int handle_flag(char c, va_list ap)
 {
 	int n = 0;
@@ -98,7 +104,6 @@ int handle_flag(char c, va_list ap)
 		break;
 	case '\0':
 		return (n);
-		break;
 	default:
 		n += _putchar('%');
 		n += _putchar(c);
