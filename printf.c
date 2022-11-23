@@ -35,6 +35,9 @@ int _printf(const char *format, ...)
 			case 'i':
 				n += _puts(basetostr(va_arg(arg, int), 10));
 				break;
+			case 'b':
+				n += _puts(basetostr(va_arg(arg, int), 2));
+				break;
 			default:
 				break;
 			}
