@@ -50,7 +50,8 @@ char *basetostr(int n, int base)
 
 	tmp = n;
 
-	do {
+	do
+	{
 		tmp = tmp / base;
 		size++;
 	} while (tmp > 0);
@@ -71,7 +72,8 @@ char *basetostr(int n, int base)
 	*--ptr = rep[(tmp % base) + 1];
 	tmp /= base;
 
-	do {
+	do
+	{
 		*--ptr = rep[tmp % base];
 		tmp /= base;
 	} while (tmp != 0);
@@ -80,4 +82,44 @@ char *basetostr(int n, int base)
 		*--ptr = '-';
 
 	return (buffer);
+}
+
+/**
+ * handle_flag - function
+ * @c: param
+ * @ap: param
+ * Return: int
+ */
+int handle_flag(char c, va_list ap)
+{
+	int n = 0;
+
+	switch (c)
+	{
+	case 'c':
+		n += _putchar(va_arg(ap, int));
+		break;
+	case 's':
+		n += _puts(va_arg(ap, char *));
+		break;
+	case '%':
+		n += _putchar('%');
+		break;
+	case 'd':
+		n += _puts(basetostr(va_arg(ap, int), 10));
+		break;
+	case 'i':
+		n += _puts(basetostr(va_arg(ap, int), 10));
+		break;
+	case 'b':
+		n += _puts(basetostr(va_arg(ap, int), 2));
+		break;
+	case '\0':
+		return (n);
+	default:
+		n += _putchar('%');
+		n += _putchar(c);
+		break;
+	}
+	return (n);
 }
