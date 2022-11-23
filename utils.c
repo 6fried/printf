@@ -44,7 +44,7 @@ char *basetostr(int n, int base)
 
 	if (n < 0)
 	{
-		n = -n;
+		n = -n - 1;
 		size++;
 	}
 
@@ -56,10 +56,20 @@ char *basetostr(int n, int base)
 	} while (tmp > 0);
 
 	buffer = malloc(++size * sizeof(char));
+
+	if (!buffer)
+	{
+		free(buffer);
+		return (NULL);
+	}
+
 	ptr = &buffer[size - 1];
 	*ptr = '\0';
 
 	tmp = n;
+
+	*--ptr = rep[(tmp % base) + 1];
+	tmp /= base;
 
 	do {
 		*--ptr = rep[tmp % base];
