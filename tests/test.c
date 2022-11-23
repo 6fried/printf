@@ -1,3 +1,4 @@
+
 /**
  * main - Entry point
  *
@@ -47,5 +48,21 @@ int main(void)
 	_printf("%d\n", l);
 	_printf("%d - %d = %d\n", 1024, 2048, -1024);
 	_printf("%d + %d = %d\n", INT_MIN, INT_MAX, (INT_MIN + INT_MAX));
+	_printf("\n\n\n");
+	printf("A char inside a sentence: %c. Did it work?\n", 'F');
+	printf("Let'see if the cast is correctly done: %c. Did it work?\n", 48);
+	printf("%s", "This sentence is retrieved from va_args!\n");
+	printf("Complete the sentence: You %s nothing, Jon Snow.\n", "know");
+	printf("Complete the sentence: You %s nothing, Jon Snow.\n", (char *)0);
+	printf("%c%cth %s%s a%cg%s: Y%sou %s no%ching%s Snow.%c", 'W', 'i', "some ", "more", 'r', "s", "", "know", 't', ", Jon", '\n');
+	printf("%%\n");
+	printf("Should print a single percent sign: %%\n");
+	printf("%s%c%c%c%s%%%s%c", "Loading ", '.', '.', '.', " 99", " Please wait", '\n');
+	printf("css%ccs%scscscs\n", 'T', "Test");
+	printf(NULL);
+	printf("%c\n", '\0');
+	printf("%");
+	printf("%!\n");
+	printf("%K\n");
 	return (0);
 }
