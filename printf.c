@@ -29,7 +29,7 @@ int _printf(const char *format, ...)
 			case '%':
 				n += _putchar('%');
 				break;
-			case 'd':
+			case ' d':
 				n += _puts(basetostr(va_arg(arg, int), 10));
 				break;
 			case 'i':
