@@ -11,12 +11,15 @@ int _printf(const char *format, ...)
 	int i, n = 0;
 	va_list ap;
 
+	if (format == NULL || (format[0] == '%' && format[1] == '\0'))
+		return (0);
+
 	va_start(ap, format);
 
 	for (i = 0; format[i] != '\0'; i++)
 	{
 		if (format[i] == '%')
-			n += handle_flag(format[++i], &ap);
+			n += handle_flag(format[++i], ap);
 		else
 			n += _putchar(format[i]);
 		va_end(ap);
@@ -48,5 +51,15 @@ int main(void)
 	len2 = printf("Percent:[%%]\n");
 	_printf("Len:[%d]\n", len);
 	printf("Len:[%d]\n", len2);
+	_printf("Complete the sentence: You %s nothing, Jon Snow.\n", (char *)0);
+	printf("Complete the sentence: You %s nothing, Jon Snow.\n", (char *)0);
+	_printf(NULL);
+	printf(NULL);
+	_printf("%");
+	printf("%");
+	_printf("%!\n");
+	printf("%!\n");
+	_printf("%K\n");
+	printf("%K\n");
 	return (0);
 }
