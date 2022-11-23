@@ -73,7 +73,7 @@ char *basetostr(int n, int base)
 }
 
 /**
- * hangle_flag - function
+ * handle_flag - function
  * @c: param
  * @ap: param
  * Return: int
