@@ -68,3 +68,34 @@ char *basetostr(int n, int base)
 
 	return (buffer);
 }
+
+int handle_flag(char c, va_list *ap)
+{
+	int n = 0;
+
+	switch (c)
+	{
+	case 'c':
+		n += _putchar(va_arg(*ap, int));
+		break;
+	case 's':
+		n += _puts(va_arg(*ap, char *));
+		break;
+	case '%':
+		n += _putchar('%');
+		break;
+	case 'd':
+		n += _puts(basetostr(va_arg(*ap, int), 10));
+		break;
+	case 'i':
+		n += _puts(basetostr(va_arg(*ap, int), 10));
+		break;
+	case 'b':
+		n += _puts(basetostr(va_arg(*ap, int), 2));
+		break;
+	default:
+
+		break;
+	}
+	return (n);
+}
