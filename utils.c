@@ -36,7 +36,7 @@ int _puts(char *str)
  */
 char *basetostr(int n, int base)
 {
-	int tmp, size = 0;
+	int tmp, size = 0, n_neg = 0;
 	char rep[] = "0123456789ABCDEF";
 	char *buffer, *ptr;
 
@@ -44,7 +44,11 @@ char *basetostr(int n, int base)
 
 	if (n < 0)
 	{
-		n = -n - 1;
+		n_neg = 1;
+		if (n == INT_MIN)
+			n = -n - 1;
+		else
+			n = -n;
 		size++;
 	}
 
@@ -69,8 +73,11 @@ char *basetostr(int n, int base)
 
 	tmp = n;
 
-	*--ptr = rep[(tmp % base) + 1];
-	tmp /= base;
+	if (n_neg == 1 && n == INT_MAX)
+	{
+		*--ptr = rep[(tmp % base) + 1];
+		tmp /= base;
+	}
 
 	do
 	{
@@ -78,7 +85,7 @@ char *basetostr(int n, int base)
 		tmp /= base;
 	} while (tmp != 0);
 
-	if (buffer[0] == 0)
+	if (n_neg)
 		*--ptr = '-';
 
 	return (buffer);
